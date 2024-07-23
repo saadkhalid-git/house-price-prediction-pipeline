@@ -1,5 +1,6 @@
 pandas
-numpy==2.0.0
+numpy
+joblib
 scikit-learn
 matplotlib
 seaborn
