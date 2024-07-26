@@ -4,6 +4,7 @@ import pandas as pd
 from house_prices.preprocess import preprocess_data
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_squared_log_error
+from . import OUTPUT_DIR
 
 
 def compute_rmsle(
@@ -24,11 +25,10 @@ def build_model(data: pd.DataFrame) -> dict[str, str]:
     model.fit(X_train, y_train)
 
     # Save the trained model and transformers
-    models_folder = '../models/'
-    joblib.dump(model, models_folder + 'model.joblib')
-    joblib.dump(numeric_transformer, models_folder + 'numerical_scaler.joblib')
+    joblib.dump(model, OUTPUT_DIR + 'model.joblib')
+    joblib.dump(numeric_transformer, OUTPUT_DIR + 'numerical_scaler.joblib')
     joblib.dump(categorical_transformer,
-                models_folder + 'categorical_encoder.joblib')
+                OUTPUT_DIR + 'categorical_encoder.joblib')
 
     # Predict house prices
     predictions = model.predict(X_test)

@@ -2,12 +2,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 import numpy as np
+from . import CONTINIOUS_FEATURES, CATEGORICAL_FEATURES, TARGET_FEATURE
 
 
 def preprocess_data(dataset_raw):
     # Define features
-    continuous_features = ['area', 'bedrooms']
-    categorical_features = ['mainroad', 'furnishingstatus']
+    continuous_features = CONTINIOUS_FEATURES
+    categorical_features = CATEGORICAL_FEATURES
 
     # Split the data into train and test sets
     train_data, test_data = train_test_split(
@@ -29,8 +30,8 @@ def preprocess_data(dataset_raw):
     X_test_processed = np.hstack((X_test_cont, X_test_cat))
 
     # Extract target variable
-    y_train = train_data['price']
-    y_test = test_data['price']
+    y_train = train_data[TARGET_FEATURE]
+    y_test = test_data[TARGET_FEATURE]
 
     return (
         X_train_processed,

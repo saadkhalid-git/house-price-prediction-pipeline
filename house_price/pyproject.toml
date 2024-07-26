@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "house_price_prediction_pipeline"
+version = "0.2"
+description = "Tools for house price prediction"
+authors = ["Saad Khalid <tosaakhalid@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"  # Adjust this based on your package requirements
+pandas = "*"
+numpy = "*"
+joblib = "*"
+scikit-learn = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.0"  # Optional: add any development dependencies you might need
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

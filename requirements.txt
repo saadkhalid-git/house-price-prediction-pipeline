@@ -4,3 +4,4 @@ joblib
 scikit-learn
 matplotlib
 seaborn
+house-prices-prediction-pipeline
