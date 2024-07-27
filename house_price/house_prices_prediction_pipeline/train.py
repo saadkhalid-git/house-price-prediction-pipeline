@@ -17,9 +17,11 @@ def compute_rmsle(
 
 
 def build_model(data: pd.DataFrame) -> dict[str, str]:
+
+    output_dir = OUTPUT_DIR()
+
     X_train, X_test, y_train, y_test, numeric_transformer, \
         categorical_transformer = preprocess_data(data)
-    output_dir = OUTPUT_DIR()
     # Train the model
     model = LinearRegression()
     model.fit(X_train, y_train)
