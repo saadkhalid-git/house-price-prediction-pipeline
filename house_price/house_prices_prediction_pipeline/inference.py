@@ -1,7 +1,10 @@
 import pandas as pd
 import numpy as np
 import joblib
-from . import FEATURES, CONTINIOUS_FEATURES, CATEGORICAL_FEATURES, OUTPUT_DIR
+from ._config import FEATURES, CONTINUOUS_FEATURES, CATEGORICAL_FEATURES
+from ._config import OUTPUT_DIR
+
+__all__ = ['make_predictions']
 
 
 def load_transformers(model_dir: str):
@@ -15,19 +18,23 @@ def load_transformers(model_dir: str):
 
 
 def make_predictions(input_data: pd.DataFrame) -> np.ndarray:
+    output_dir = OUTPUT_DIR()
+    features = FEATURES()
+    continuous_features = CONTINUOUS_FEATURES()
+    categorical_features = CATEGORICAL_FEATURES()
     numeric_transformer, categorical_transformer = load_transformers(
-        OUTPUT_DIR
+        output_dir
     )
 
     # Load the model
-    model = joblib.load(OUTPUT_DIR + 'model.joblib')
+    model = joblib.load(output_dir + 'model.joblib')
 
     # Preprocess input data
 
-    X = input_data[FEATURES]
+    X = input_data[features]
 
-    X_numeric = numeric_transformer.transform(X[CONTINIOUS_FEATURES])
-    X_categorical = categorical_transformer.transform(X[CATEGORICAL_FEATURES])
+    X_numeric = numeric_transformer.transform(X[continuous_features])
+    X_categorical = categorical_transformer.transform(X[categorical_features])
     X_final = np.concatenate([X_numeric, X_categorical], axis=1)
 
     # Make predictions

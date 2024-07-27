@@ -1,8 +1,7 @@
-FEATURES = ['price', 'area', 'bedrooms', 'bathrooms', 'stories',
-            'mainroad', 'guestroom', 'basement', 'hotwaterheating',
-            'airconditioning', 'parking', 'prefarea',
-            'furnishingstatus']
-CONTINIOUS_FEATURES = ['area', 'bedrooms']
-CATEGORICAL_FEATURES = ['mainroad', 'furnishingstatus']
-TARGET_FEATURE = 'price'
-OUTPUT_DIR = '../models/'
+from ._config import (
+    setup, FEATURES, CONTINUOUS_FEATURES,
+    CATEGORICAL_FEATURES, TARGET_FEATURE, OUTPUT_DIR
+)
+
+__all__ = ['setup', 'FEATURES', 'CONTINUOUS_FEATURES',
+           'CATEGORICAL_FEATURES', 'TARGET_FEATURE', 'OUTPUT_DIR']

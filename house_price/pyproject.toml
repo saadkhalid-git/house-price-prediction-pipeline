@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "house_price_prediction_pipeline"
-version = "0.2"
+version = "0.3.2.2"
 description = "Tools for house price prediction"
 authors = ["Saad Khalid <tosaakhalid@gmail.com>"]
 license = "MIT"
