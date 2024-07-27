@@ -18,10 +18,12 @@ def load_transformers(model_dir: str):
 
 
 def make_predictions(input_data: pd.DataFrame) -> np.ndarray:
+
     output_dir = OUTPUT_DIR()
     features = FEATURES()
     continuous_features = CONTINUOUS_FEATURES()
     categorical_features = CATEGORICAL_FEATURES()
+
     numeric_transformer, categorical_transformer = load_transformers(
         output_dir
     )

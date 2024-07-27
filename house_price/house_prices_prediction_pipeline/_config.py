@@ -1,3 +1,5 @@
+import os
+
 _is_setup_done = False
 _features = None
 _continuous_features = None
@@ -15,6 +17,10 @@ def setup(features: list, continuous_features: list,
     _categorical_features = categorical_features
     _target_feature = target_feature
     _output_dir = output_dir
+
+    if not os.path.exists(_output_dir):
+        os.makedirs(_output_dir)
+
     _is_setup_done = True
 
 
